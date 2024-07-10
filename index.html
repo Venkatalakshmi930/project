@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="LoginController">
+
+  <div class="login-container">
+    <div class="login-form">
+      <h1>Login</h1>
+      <form ng-submit="login()" name="loginForm" novalidate>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" ng-model="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" ng-model="password" required>
+        </div>
+        <button type="submit" ng-disabled="loginForm.$invalid">Login</button>
+      </form>
+      <div class="additional-links">
+        <a href="#" class="forgot-password">Forgot Password?</a>
+        <a href="#" class="new-registration">New Registration</a>
+      </div>
+      <p ng-if="message">{{message}}</p>
+    </div>
+  </div>
+
+</body>
+</html>
