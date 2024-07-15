@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="userApp">
+<head>
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="RegisterController">
+
+  <div class="registration-container">
+    <div class="registration-form">
+      <h1>New Registration</h1>
+      <form ng-submit="register()" name="registrationForm" novalidate>
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" ng-model="user.firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" ng-model="user.lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" ng-model="user.email" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" ng-model="user.age" required>
+        </div>
+        <div class="form-group password-wrapper">
+          <label for="password">Password:</label>
+          <input type="{{passwordInputType}}" id="password" ng-model="user.password" required>
+          <span class="field-icon" ng-click="togglePasswordVisibility('password')">
+            <i class="fa" ng-class="{'fa-eye': passwordInputType === 'password', 'fa-eye-slash': passwordInputType === 'text'}"></i>
+          </span>
+        </div>
+        <div class="form-group password-wrapper">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="{{confirmPasswordInputType}}" id="confirmPassword" ng-model="user.confirmPassword" required>
+          <span class="field-icon" ng-click="togglePasswordVisibility('confirmPassword')">
+            <i class="fa" ng-class="{'fa-eye': confirmPasswordInputType === 'password', 'fa-eye-slash': confirmPasswordInputType === 'text'}"></i>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <div class="phone-number-container">
+            <div class="country-code">+91</div>
+            <input type="text" id="phoneNumber" ng-model="user.phoneNumber" class="phone-number-input" required>
+          </div>
+        </div>
+        <button type="submit" ng-disabled="registrationForm.$invalid">Register</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
